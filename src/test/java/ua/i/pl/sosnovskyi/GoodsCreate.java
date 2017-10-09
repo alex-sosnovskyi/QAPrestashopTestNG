@@ -142,6 +142,10 @@ public class GoodsCreate {
 
         Assert.assertEquals(mainPage.isGoodPresents(nameToAssert), true, "product is missing");
         mainPage.newGoodClick();
+        Assert.assertEquals(driver.getTitle(), nameToAssert, "It's wrong page");
+        CurrentProductPage currentProductPage = new CurrentProductPage(driver);
+        Assert.assertEquals(currentProductPage.getPrice(), priceToAssert, 0.01, "Price is invalid");
+        Assert.assertEquals(currentProductPage.getQuantity(), quantityToAssert, "Quantity is invalid");
 
     }
 }
