@@ -123,7 +123,7 @@ public class GoodsCreate {
         goodsPage.closeAlert();
         goodsPage.saveButtonClick();
         goodsPage.closeAlert();
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
     }
 
     @Test(dependsOnMethods = "addGood")
