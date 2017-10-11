@@ -120,10 +120,7 @@ public class GoodsCreate {
         quantityToAssert = goodsPage.newGoodQuantityFill();
         priceToAssert = goodsPage.newGoodPriceFill();
         goodsPage.activateClick();
-        goodsPage.closeAlert();
         goodsPage.saveButtonClick();
-        goodsPage.closeAlert();
-//        Thread.sleep(5000);
     }
 
     @Test(dependsOnMethods = "addGood")
@@ -134,11 +131,10 @@ public class GoodsCreate {
         indexPage.allGoodsClick();
         MainPage mainPage = new MainPage(driver);
 //        List<String> namesOfProducts = mainPage.getProductsNames();
-//    System.out.println("nameToAssert "+nameToAssert);
-//    for(String str:namesOfProducts){
-//        System.out.println(str);
-//    }
-//        Assert.assertEquals(namesOfProducts.contains(nameToAssert.toLowerCase()), true, "product is missing");
+//        System.out.println("nameToAssert " + nameToAssert);
+//        for (String str : namesOfProducts) {
+//            System.out.println(str);
+//        }
 
         Assert.assertEquals(mainPage.isGoodPresents(nameToAssert), true, "product is missing");
         mainPage.newGoodClick();

@@ -2,6 +2,7 @@ package ua.i.pl.sosnovskyi.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -58,19 +59,27 @@ public class GoodsPage {
     public void activateClick() {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", driver.findElement(newGoodActivateSelector));
+        closeAlert();
     }
 
     public void saveButtonClick() {
-        WebDriverWait wait=new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(saveButtonSelector));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", driver.findElement(saveButtonSelector));
+        closeAlert();
     }
 
-    public void closeAlert(){
-        WebElement alertContainer=driver.findElement(message);
-        WebDriverWait wait=new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.growl-notice")));
-        alertContainer.findElement(By.className("growl-close")).click();
+    private void closeAlert() {
+        WebElement alertContainer = driver.findElement(message);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.growl-notice")));
+        WebElement el = driver.findElement(By.className("growl-close"));
+        try {
+            el.click();
+        } catch (StaleElementReferenceException e) {
+            System.out.println("el reference is lost");
+        }
+
     }
 }

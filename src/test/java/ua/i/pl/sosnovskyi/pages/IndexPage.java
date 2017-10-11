@@ -14,7 +14,7 @@ public class IndexPage {
         this.driver = driver;
     }
 
-    public void allGoodsClick(){
+    public void allGoodsClick() {
         driver.findElement(allGoodsSelector).click();
     }
 }

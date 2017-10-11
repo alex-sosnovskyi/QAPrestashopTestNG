@@ -34,14 +34,15 @@ public class MainPage {
         links = driver.findElements(productLinkSelector);
         for (WebElement element : links) {
             if (element.getText().toLowerCase().equals(name.toLowerCase())) {
-                newElement=element;
+                newElement = element;
                 return true;
             }
         }
 
         return false;
     }
-    public void newGoodClick(){
+
+    public void newGoodClick() {
         newElement.click();
     }
 }

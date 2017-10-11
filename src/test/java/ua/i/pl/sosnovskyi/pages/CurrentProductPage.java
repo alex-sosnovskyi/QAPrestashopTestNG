@@ -18,20 +18,22 @@ public class CurrentProductPage {
     public CurrentProductPage(EventFiringWebDriver driver) {
         this.driver = driver;
     }
-    public float getPrice(){
-        WebElement element=driver.findElement(priceSelector);
-       float result= Float.valueOf(element.getAttribute("content"));
+
+    public float getPrice() {
+        WebElement element = driver.findElement(priceSelector);
+        float result = Float.valueOf(element.getAttribute("content"));
         return result;
     }
-    public int getQuantity(){
-        WebElement element=driver.findElement(quantitySelector);
-        int result=0;
-        String resultStr=element.getText();
-        String regExp="[\\d]{1,}";
-        Pattern pattern=Pattern.compile(regExp);
-        Matcher matcher=pattern.matcher(resultStr);
-        while (matcher.find()){
-            result=Integer.parseInt(matcher.group())   ;
+
+    public int getQuantity() {
+        WebElement element = driver.findElement(quantitySelector);
+        int result = 0;
+        String resultStr = element.getText();
+        String regExp = "[\\d]{1,}";
+        Pattern pattern = Pattern.compile(regExp);
+        Matcher matcher = pattern.matcher(resultStr);
+        while (matcher.find()) {
+            result = Integer.parseInt(matcher.group());
         }
         return result;
     }

@@ -15,13 +15,14 @@ public class LoginPage {
     private By submit = By.name("submitLogin");
 
     public LoginPage(EventFiringWebDriver driver) {
-        if (driver==null){
+        if (driver == null) {
             throw new RuntimeException("Driver is not available!!!");
         }
-        this.driver=driver;
+        this.driver = driver;
     }
-    public void openPage(String url){
-        if(url==null){
+
+    public void openPage(String url) {
+        if (url == null) {
             throw new RuntimeException("Page is null!!!");
         }
         try {
@@ -31,28 +32,29 @@ public class LoginPage {
         }
 
     }
-    public void fillEmailInput(String login){
+
+    public void fillEmailInput(String login) {
         try {
             loginForm = driver.findElement(By.id("login_form"));
         } catch (Exception e) {
             throw new RuntimeException("login_form not found");
         }
-        if (loginForm==null){
+        if (loginForm == null) {
             throw new RuntimeException("login form is not available!!!");
         }
         WebElement element = loginForm.findElement(email);
         element.sendKeys(login);
     }
 
-    public void fillPassInput(String password){
-        if (loginForm==null){
+    public void fillPassInput(String password) {
+        if (loginForm == null) {
             throw new RuntimeException("login form is not available!!!");
         }
         driver.findElement(passwrd).sendKeys(password);
     }
 
-    public void clickLoginButton(){
-        if (loginForm==null){
+    public void clickLoginButton() {
+        if (loginForm == null) {
             throw new RuntimeException("login form is not available!!!");
         }
         driver.findElement(submit).click();

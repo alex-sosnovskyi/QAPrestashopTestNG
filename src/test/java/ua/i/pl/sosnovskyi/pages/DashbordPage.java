@@ -19,8 +19,8 @@ public class DashbordPage {
     }
 
     public void submenuGoodsItemClick() {
-        WebElement currentSubMenuItem=driver.findElement(catalogMenuSelector);
-        JavascriptExecutor executor=(JavascriptExecutor)driver;
+        WebElement currentSubMenuItem = driver.findElement(catalogMenuSelector);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click()", currentSubMenuItem);
     }
 }
